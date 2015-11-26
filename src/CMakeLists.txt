@@ -70,6 +70,13 @@ set_target_properties(glfw PROPERTIES
                       FOLDER "GLFW3"
                       DEBUG_POSTFIX d)
 
+if(_GLFW_USE_GLESV1)
+    target_compile_definitions(glfw INTERFACE GLFW_USE_GLESV1 GLFW_INCLUDE_ES1)
+endif()
+if(_GLFW_USE_GLESV2)
+    target_compile_definitions(glfw INTERFACE GLFW_USE_GLESV2 GLFW_INCLUDE_ES2)
+endif()
+
 if (BUILD_SHARED_LIBS)
     if (WIN32)
         target_compile_definitions(glfw INTERFACE -DGLFW_DLL)
