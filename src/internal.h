@@ -91,6 +91,8 @@ typedef struct _GLFWcursor      _GLFWcursor;
  #include "wl_platform.h"
 #elif defined(_GLFW_MIR)
  #include "mir_platform.h"
+#elif defined(_GLFW_SCREEN)
+ #include "screen_platform.h"
 #else
  #error "No supported window creation API selected"
 #endif

@@ -29,6 +29,11 @@ elseif (_GLFW_MIR)
                      posix_time.h posix_tls.h xkb_unicode.h)
     set(glfw_SOURCES ${common_SOURCES} mir_init.c mir_monitor.c mir_window.c
                      linux_joystick.c posix_time.c posix_tls.c xkb_unicode.c)
+elseif (_GLFW_SCREEN)
+    set(glfw_HEADER  ${common_HEADERS} screen_platform.h linux_joystick.h
+                     posix_time.h posix_tls.h)
+    set(glfw_SOURCES ${common_SOURCES} screen_init.c screen_monitor.c screen_window.c
+                     linux_joystick.c posix_time.c posix_tls.c)
 endif()
 
 if (_GLFW_EGL)

@@ -187,6 +187,11 @@ elseif (APPLE)
     message(STATUS "Using Cocoa for window creation")
     set(_GLFW_NSGL 1)
     message(STATUS "Using NSGL for context creation")
+elseif (QNX)
+    set(_GLFW_EGL 1)
+    message(STATUS "Using EGL for context creation")
+    set(_GLFW_SCREEN 1)
+    message(STATUS "Using screen for window creation")
 elseif (UNIX)
     if (GLFW_USE_WAYLAND)
         set(_GLFW_WAYLAND 1)
@@ -451,6 +456,13 @@ if (_GLFW_COCOA AND _GLFW_NSGL)
 
     set(glfw_PKG_DEPS "")
     set(glfw_PKG_LIBS "-framework Cocoa -framework OpenGL -framework IOKit -framework CoreFoundation -framework CoreVideo")
+endif()
+
+#--------------------------------------------------------------------
+# Use screen for window creation
+#--------------------------------------------------------------------
+if (_GLFW_SCREEN)
+    list(APPEND glfw_LIBRARIES screen)
 endif()
 
 #--------------------------------------------------------------------
