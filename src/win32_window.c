@@ -321,6 +321,8 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
         }
 
         case WM_CLOSE:
+        case WM_QUERYENDSESSION:
+        case WM_ENDSESSION:
         {
             _glfwInputWindowCloseRequest(window);
             return 0;
